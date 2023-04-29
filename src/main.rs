@@ -1,7 +1,7 @@
 use std::{fs::{self, File}, io::Write};
 
 use bytes::{BytesMut, BufMut};
-use prost::{Message};
+use prost::Message;
 
 mod lib;
 
@@ -22,7 +22,7 @@ fn main() {
             let mut file = File::create("./out/foo.buf").unwrap();
             file.write_all(&buf).unwrap();
         },
-        Err(_) => todo!(),
+        Err(err) => panic!("{}", err),
     }
 
     match fs::read("./out/foo.buf") {
@@ -35,11 +35,9 @@ fn main() {
                 Ok(foo) => {
                     println!("{:#?}", foo);
                 },
-                Err(_) => todo!(),
+                Err(err) => panic!("{}", err),
             }
         },
-        Err(_) => todo!(),
+        Err(err) => panic!("{}", err),
     }
-
-    
 }
