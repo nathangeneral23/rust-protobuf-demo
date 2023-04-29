@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package proto.types;
+
+message Foo {
+    string text = 1;
+    optional string author = 2;
+}
